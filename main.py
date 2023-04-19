@@ -168,47 +168,30 @@ def check_options(pieces, locations, turn):
 
 # check valid pawn moves
 def check_pawn(position, color, en_passant=None):
-    print("en_passant value:", en_passant)
-    moves_list = []
+     moves_list = []
     if color == 'white':
-        if (position[0], position[1] + 1) not in white_location and \
-                (position[0], position[1] + 1) not in black_location and position[1] < 7:
+        if (position[0], position[1] + 1) not in white_locations and \
+                (position[0], position[1] + 1) not in black_locations and position[1] < 7:
             moves_list.append((position[0], position[1] + 1))
-        if (position[0], position[1] + 2) not in white_location and \
-                (position[0], position[1] + 2) not in black_location and position[1] == 1:
+        if (position[0], position[1] + 2) not in white_locations and \
+                (position[0], position[1] + 2) not in black_locations and position[1] == 1:
             moves_list.append((position[0], position[1] + 2))
-        if (position[0] + 1, position[1] + 1) in black_location:
+        if (position[0] + 1, position[1] + 1) in black_locations:
             moves_list.append((position[0] + 1, position[1] + 1))
-        if (position[0] - 1, position[1] + 1) in black_location:
+        if (position[0] - 1, position[1] + 1) in black_locations:
             moves_list.append((position[0] - 1, position[1] + 1))
-        if en_passant is not None and position[1] == 4:
-            # check for en passant move to the right
-            if (position[0] + 1, position[1] + 1) == en_passant:
-                moves_list.append(en_passant)
-            # check for en passant move to the left
-            elif (position[0] - 1, position[1] + 1) == en_passant:
-                moves_list.append(en_passant)
     else:
-        # j ust upside down
-        if (position[0], position[1] - 1) not in white_location and \
-                (position[0], position[1] - 1) not in black_location and position[1] > 0:
+        if (position[0], position[1] - 1) not in white_locations and \
+                (position[0], position[1] - 1) not in black_locations and position[1] > 0:
             moves_list.append((position[0], position[1] - 1))
-        if (position[0], position[1] - 2) not in white_location and \
-                (position[0], position[1] - 2) not in black_location and position[1] == 6:
+        if (position[0], position[1] - 2) not in white_locations and \
+                (position[0], position[1] - 2) not in black_locations and position[1] == 6:
             moves_list.append((position[0], position[1] - 2))
-        if (position[0] + 1, position[1] - 1) in white_location:
+        if (position[0] + 1, position[1] - 1) in white_locations:
             moves_list.append((position[0] + 1, position[1] - 1))
-        if (position[0] - 1, position[1] - 1) in white_location:
+        if (position[0] - 1, position[1] - 1) in white_locations:
             moves_list.append((position[0] - 1, position[1] - 1))
-        if en_passant is not None and position[1] == 3:
-            # check for en passant move to the right
-            if (position[0] + 1, position[1] - 1) == en_passant:
-                moves_list.append(en_passant)
-            # check for en passant move to the left
-            elif (position[0] - 1, position[1] - 1) == en_passant:
-                moves_list.append(en_passant)
     return moves_list
-
 
 
 
